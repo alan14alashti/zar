@@ -21,6 +21,8 @@ Ensure you have the following installed:
 
 ### Installation
 
+```bash
+
 1. Clone the repository:
 
   git clone https://github.com/alan14alashti/zar
