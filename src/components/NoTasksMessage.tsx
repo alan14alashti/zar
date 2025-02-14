@@ -11,7 +11,7 @@ const NoTasksMessage: React.FC<NoTasksMessageProps> = ({ onRetry }) => {
       <Result
         status="404"
         title="No Tasks Available"
-        subTitle="It seems there are no tasks to display at the moment."
+        subTitle="It seems there are no tasks match to your search"
         extra={onRetry && <Button type="primary" onClick={onRetry}>Retry</Button>}
       />
     </div>

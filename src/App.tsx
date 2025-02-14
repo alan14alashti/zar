@@ -5,16 +5,16 @@ import MainLayout from './layout/MainLayout';
 
 const theme = {
   token: {
-    colorPrimary: "#1D9670",      // Primary color (Purple)
-    borderRadius: 8,             // Border radius for rounded corners
+    colorPrimary: "#1D9670",      
+    borderRadius: 8,             
     fontFamily: "Inter, sans-serif",
-    colorLink: "#13c2c2",        // Link color
-    colorBgContainer: "#FCFCFD", // Background color for containers
+    colorLink: "#13c2c2",        
+    colorBgContainer: "#FCFCFD",
   },
   components: {
     Button: {
-      colorPrimary: "#722ed1",
-      borderRadius: 20,
+      colorPrimary: "#1D9670",
+      borderRadius: 8,
     },
     Card: {
       borderRadius: 16,
