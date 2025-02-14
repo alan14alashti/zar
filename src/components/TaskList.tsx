@@ -69,11 +69,10 @@ const TaskList: React.FC = () => {
       return task.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
-  // Retry function to refetch tasks
   const handleRetry = () => {
     setLoading(true);
-    setError(null); // Clear the error message
-    fetchTasks();   // Re-fetch tasks
+    setError(null); 
+    fetchTasks();  
   };
 
   const sortedTasks = handleSort(filteredTasks);
@@ -94,7 +93,7 @@ const TaskList: React.FC = () => {
           position: 'sticky',
           top: '0',
           zIndex: '10',
-          padding: '20px',
+          padding: '10px 20px',
           width: '100%',
           display: 'flex',
           alignItems: 'center', 
@@ -106,7 +105,7 @@ const TaskList: React.FC = () => {
           style={{
             textAlign: 'center',
             fontSize: '28px',
-            marginBottom: '16px',
+            marginBottom: '24px',
             fontWeight: 'bold',
           }}
         >
@@ -143,6 +142,8 @@ const TaskList: React.FC = () => {
             scrollbarColor: '#888 #f1f1f1', 
             transition: 'scrollbar-color 0.3s ease', 
           }}
+          onMouseEnter={e => e.currentTarget.style.scrollbarColor = '#888 #f1f1f1'}
+          onMouseLeave={e => e.currentTarget.style.scrollbarColor = 'transparent transparent'}
         >
           {sortedTasks.map((task) => (
             <TaskItem key={task.id} {...task} onToggle={onToggleTask} />
