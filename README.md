@@ -50,7 +50,6 @@ A simple React task list application that fetches tasks from an API, displays th
 - Optionally, use `npm run build` to create a production build.
 
 ### 📈 Additional Features/Improvements
-- **Debounced Search:** Reduces API calls during typing.
 - **Responsive Design:** Mobile-friendly layout.
 - **Task Sorting:** Sorts tasks alphabetically.
 
