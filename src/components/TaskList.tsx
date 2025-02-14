@@ -4,6 +4,7 @@ import { Spin, Alert } from 'antd';
 import TaskItem from './TaskItem';
 import TaskSearch from './TaskSearch';
 import TaskFilter from './TaskFilter';
+import NoTasksMessage from './NoTasksMessage';
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -12,22 +13,23 @@ const TaskList: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'completed' | 'pending'>('all'); 
   const [searchQuery, setSearchQuery] = useState<string>(''); 
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-        if (!response.ok) {
-          throw new Error('Failed to fetch tasks');
-        }
-        const data = await response.json();
-        setTasks(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+      if (!response.ok) {
+        throw new Error('Failed to fetch tasks');
       }
-    };
+      const data = await response.json();
+      setTasks(data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchTasks();
   }, []);
 
@@ -51,13 +53,17 @@ const TaskList: React.FC = () => {
       return task.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
+  const handleRetry = () => {
+    setLoading(true);
+    setError(null); 
+    fetchTasks(); 
+  };
+
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
         minHeight: '80vh',
         padding: '12px',
         margin: '0 auto',
@@ -123,7 +129,7 @@ const TaskList: React.FC = () => {
           ))}
         </div>
       ) : (
-        <p>No tasks available</p>
+        <NoTasksMessage onRetry={handleRetry} /> 
       )}
     </div>
   );
