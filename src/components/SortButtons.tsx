@@ -11,9 +11,10 @@ interface SortButtonsProps {
 
 const SortButtons: React.FC<SortButtonsProps> = ({ sortBy, sortOrder, setSortBy, setSortOrder }) => {
   return (
-    <div style={{ marginTop: '16px' }}>
+    <div>
       <Button
         type="primary"
+        ghost
         icon={sortBy === 'title' ? <SortDescendingOutlined /> : <SortAscendingOutlined />}
         onClick={() => {
           setSortBy(sortBy === 'title' ? 'status' : 'title');
